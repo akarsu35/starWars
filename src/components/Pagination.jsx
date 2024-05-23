@@ -20,7 +20,7 @@ export default function Pagination({
       <button
         onClick={handleLoadMoreClick}
         className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 w-[20rem] "
-        // disabled={page >= totalPages}
+        disabled={page >= totalPages}
       >
         More
       </button>

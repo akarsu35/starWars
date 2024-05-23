@@ -48,25 +48,27 @@ function StarshipList() {
   return (
     <div className="flex flex-col items-center justify-center">
       <SearchBar value={searchTerm} onChange={handleSearch} />
-      {starships.length ==0 && <Loading/>}
-      <div className='flex flex-row'>
+      {starships.length == 0 && <Loading />}
+      <div className="flex flex-row">
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-8 lg:gap-16 pb-4 ">
-        {starships.map((starship, idx) => (
-          <StarshipItem
-            key={idx}
-            starship={starship}
-            onClick={handleStarshipClick}
-            idx={idx}
-          />
-        ))}
-      </ul>
+          {starships.map((starship, idx) => (
+            <StarshipItem
+              key={idx}
+              starship={starship}
+              onClick={handleStarshipClick}
+              idx={idx}
+            />
+          ))}
+        </ul>
       </div>
-      
+
       <Pagination
         page={page}
         setPage={setPage}
         totalPages={4}
         handleLoadMore={handleLoadMore}
+        starships={starships}
+        setStarships={setStarships}
       />
       {selectedStarship && (
         <StarshipDetails

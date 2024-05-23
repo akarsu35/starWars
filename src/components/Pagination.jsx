@@ -3,13 +3,15 @@ export default function Pagination({
   totalPages,
   handleLoadMore,
   setPage,
+  starships,
+  setStarships,
 }) {
   const handleLoadMoreClick = (e) => {
     e.preventDefault()
+    setStarships([])
     if (page < totalPages) {
       const newPage = page + 1 // Yeni sayfa değerini al
       setPage(newPage) // State'i güncelle
-
     }
   }
 

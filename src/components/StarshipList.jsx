@@ -4,6 +4,7 @@ import StarshipItem from './StarshipItem'
 import StarshipDetails from './StarshipDetails'
 import Pagination from './Pagination'
 import SearchBar from './SearchBar'
+import Loading from './Loading'
 
 function StarshipList() {
   const [starships, setStarships] = useState([])
@@ -16,10 +17,16 @@ function StarshipList() {
   }, [page, searchTerm])
 
   const fetchStarships = async () => {
-    const response = await axios.get(
-      `https://swapi.dev/api/starships/?page=${page}&search=${searchTerm}`
-    )
-    setStarships(response.data.results)
+    try {
+      const response = await axios.get(
+        `https://swapi.dev/api/starships/?page=${page}&search=${searchTerm}`
+      )
+    
+      setStarships(response.data.results)
+    } catch (error) {
+    console.log(error.response)
+    }
+    
   }
 
   const handleSearch = (event) => {
@@ -41,6 +48,7 @@ function StarshipList() {
   return (
     <div className="flex flex-col items-center justify-center">
       <SearchBar value={searchTerm} onChange={handleSearch} />
+      {starships.length ==0 && <Loading/>}
       <div className='flex flex-row'>
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-8 lg:gap-16 pb-4 ">
         {starships.map((starship, idx) => (

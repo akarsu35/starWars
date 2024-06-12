@@ -2,7 +2,7 @@
 
 ### `first--> npm i`
 ### `second--> npm run dev`
-#### canlı site :`https://star-wars-five-beta.vercel.app/`
+#### canlı site :`https://star-wars-omega-silk.vercel.app/`
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
